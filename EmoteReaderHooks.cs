@@ -1,7 +1,6 @@
-﻿using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
-using RoleplayingVoice;
 using System;
 using System.Linq;
 
@@ -28,7 +27,7 @@ namespace ArtemisRoleplayingKit {
 
                 IsValid = true;
             } catch (Exception ex) {
-                Plugin.PluginLog.Error(ex, "Something went wrong!");
+
             }
         }
 

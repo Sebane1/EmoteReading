@@ -19,6 +19,8 @@ namespace ArtemisRoleplayingKit {
         private IObjectTable _objectTable;
 
         public EmoteReaderHooks(IGameInteropProvider interopProvider, IClientState clientState, IObjectTable objectTable) {
+            _clientState = clientState;
+            _objectTable = objectTable;
             try {
                 var emoteFuncPtr = "E8 ?? ?? ?? ?? 48 8D 8B ?? ?? ?? ?? 4C 89 74 24";
                 hookEmote = interopProvider.HookFromSignature<OnEmoteFuncDelegate>(emoteFuncPtr, OnEmoteDetour);

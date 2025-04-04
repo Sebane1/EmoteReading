@@ -1,6 +1,7 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
+using DragAndDropTexturing.ThreadSafeDalamudObjectTable;
 using System;
 using System.Linq;
 
@@ -16,9 +17,9 @@ namespace ArtemisRoleplayingKit {
 
         public bool IsValid = false;
         private IClientState _clientState;
-        private IObjectTable _objectTable;
+        private ThreadSafeGameObjectManager _objectTable;
 
-        public EmoteReaderHooks(IGameInteropProvider interopProvider, IClientState clientState, IObjectTable objectTable) {
+        public EmoteReaderHooks(IGameInteropProvider interopProvider, IClientState clientState, ThreadSafeGameObjectManager objectTable) {
             _clientState = clientState;
             _objectTable = objectTable;
             try {
@@ -42,7 +43,7 @@ namespace ArtemisRoleplayingKit {
             // unk - some field of event framework singleton? doesn't matter here anyway
             // PluginLog.Log($"Emote >> unk:{unk:X}, instigatorAddr:{instigatorAddr:X}, emoteId:{emoteId}, targetId:{targetId:X}, unk2:{unk2:X}");
             try {
-                if (_clientState.LocalPlayer != null) {
+                if (_objectTable.LocalPlayer != null) {
                     var instigatorOb = _objectTable.FirstOrDefault(x => (ulong)x.Address == instigatorAddr);
                     if (instigatorOb != null) {
                         OnEmote?.Invoke(instigatorOb, emoteId);

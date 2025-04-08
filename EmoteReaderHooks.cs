@@ -1,7 +1,7 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
-using DragAndDropTexturing.ThreadSafeDalamudObjectTable;
+using GameObjectHelper.ThreadSafeDalamudObjectTable;
 using System;
 using System.Linq;
 

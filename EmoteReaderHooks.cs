@@ -42,7 +42,7 @@ namespace ArtemisRoleplayingKit {
             // unk - some field of event framework singleton? doesn't matter here anyway
             // PluginLog.Log($"Emote >> unk:{unk:X}, instigatorAddr:{instigatorAddr:X}, emoteId:{emoteId}, targetId:{targetId:X}, unk2:{unk2:X}");
             try {
-                if (_clientState.LocalPlayer != null) {
+                if (_objectTable.LocalPlayer != null) {
                     var instigatorOb = _objectTable.FirstOrDefault(x => (ulong)x.Address == instigatorAddr);
                     if (instigatorOb != null) {
                         OnEmote?.Invoke(instigatorOb, emoteId);

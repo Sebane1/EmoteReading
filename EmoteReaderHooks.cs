@@ -1,6 +1,7 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
+using GameObjectHelper.ThreadSafeDalamudObjectTable;
 using System;
 using System.Linq;
 
@@ -16,9 +17,9 @@ namespace ArtemisRoleplayingKit {
 
         public bool IsValid = false;
         private IClientState _clientState;
-        private IObjectTable _objectTable;
+        private ThreadSafeGameObjectManager _objectTable;
 
-        public EmoteReaderHooks(IGameInteropProvider interopProvider, IClientState clientState, IObjectTable objectTable) {
+        public EmoteReaderHooks(IGameInteropProvider interopProvider, IClientState clientState, ThreadSafeGameObjectManager objectTable) {
             _clientState = clientState;
             _objectTable = objectTable;
             try {
